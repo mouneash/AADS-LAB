@@ -1,167 +1,129 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <bits/stdc++.h>
+#include<inttypes.h>
+using namespace std;
 
-
-void makeset(int n,int parent[])
+class node
 {
-    int i;
-   
-    for(i = 0; i < n; i++)
-    {    
-        parent[i] = i;
-    }
-}    
+ public:
+ int data;
+ node *npx;
+};
 
-
-int find(int x,int parent[])
+node *XOR (node *a,node *b)
 {
-    if(parent[x] != x)
-    {
-        parent[x]=find(parent[x],parent);
-    }
-    return parent[x];
+  return (node*)((uintptr_t) (a) ^  (uintptr_t) (b));
 }
- 
 
-void Union(int x, int y, int parent[], int rank[])
+void insert(node **head,int key)
 {
+ node *new_node=new node();
+ new_node->data=key;
+ new_node->npx=*head;
+ if(*head!=NULL)
+ {
+ (*head)->npx=XOR(new_node,(*head)->npx);
+ }
+*head=new_node;
+}
+
+node *deleteb(node *head)
+{
+ if(head == NULL)
+  return NULL;
+ node *temp=XOR(head->npx,NULL);
+ temp->npx=XOR(head,temp->npx);
+ free(head);
+ return temp;
+
+}
+void print(node *head)
+{
+ node *curr=head;
+ node *prev=NULL;
+ node *next;
+ cout<<"The Linked List as follows: "<<endl;
+ while(curr!=NULL)
+ {
+  cout<<curr->data<<" ";
+ next=XOR(prev,curr->npx);
+ prev=curr;
+ curr=next;
+ }
+}
+
+void insertend(node **head,int data)
+{
+  node *new_node=new node();
+  new_node->data=data;
+  if(*head==NULL)
+  {
+   new_node->npx=*head;
+   *head=new_node;
+   }
+  else
+  {
+ node *curr=*head;
+ node *prev=NULL;
+ node *next;
+ while(XOR(prev,curr->npx)!=NULL)
+ {
+  next=XOR(prev,curr->npx);
+  prev=curr;
+  curr=next;
+ }
+ new_node->npx=curr;
+ curr->npx=XOR(prev,new_node);
+ }
+}
+
+node *deleteend(node *head)
+{
+  node *curr=head;
+  node *prev=NULL;
+  node *next=XOR(curr->npx,prev);
+  if(head == NULL)
+   return NULL;
+   
+   while(next!=NULL)
+   {
+    prev=curr;
+    curr=next;
+    next=XOR(curr->npx,prev);
+   }
+   if(prev!=NULL)
+   prev->npx=XOR(prev->npx,curr);
     
-    int x0 = find(x,parent);
-    int y0 = find(y,parent);
- 
-    
-    if(x0 == y0)
-    {
-        return;
-    }
- 
+    free(curr);
+    return head;
+}
   
-    if(rank[x0] < rank[y0])
-    {
-        parent[x0] = y0;
-    }
- 
-   
-    else if(rank[y0] < rank[x0])
-    {
-        parent[y0] = x0;
-    }
- 
-    else 
-    {
-       
-        parent[y0] = x0;
-        
-        rank[x0] = rank[x0] + 1;
-    }
-}
-
-int count_of_Islands(int arr[20][20],int a,int b,int n,int parent[], int rank[])
-{
-    int j,k;
-   
-    for(j = 0; j < a; j++)
-    {
-        for(k = 0; k < b; k++)
-        {
-           
-            if(arr[j][k] == 0)
-            {
-                continue;
-            }
-
-            if(j + 1 < a && arr[j + 1][k] == 1)
-            {
-                Union(j * (b) + k, (j + 1) * (b) + k, parent, rank);
-            }
-            if(j - 1 >= 0 && arr[j - 1][k] == 1)
-            {
-                Union(j * (b) + k, (j - 1) * (b) + k, parent, rank);
-            }
-            if(k + 1 < b && arr[j][k + 1] == 1)
-            {
-                Union(j * (b) + k, (j) * (b) + k + 1, parent, rank);
-            }
-            if(k - 1 >= 0 && arr[j][k - 1] == 1)
-            {
-                Union(j * (b) + k,(j) * (b) + k - 1, parent, rank);
-            }
-            if(j + 1 < a && k + 1 < b && arr[j + 1][k + 1] == 1)
-            {
-                Union(j * (b) + k, (j + 1) * (b) + k + 1, parent, rank);
-            }    
-            if(j + 1 < a && k - 1 >= 0 && arr[j + 1][k - 1] == 1)
-            {
-                Union(j * b + k, (j + 1) * (b) + k - 1, parent, rank);
-            }
-            if(j - 1 >= 0 && k + 1 < b && arr[j - 1][k + 1] == 1)
-            {
-                Union(j * b + k, (j - 1) * b + k + 1, parent, rank);
-            }
-            if(j - 1 >= 0 && k - 1 >= 0 && arr[j - 1][k - 1] == 1)
-            {
-                Union(j * b + k, (j - 1) * b + k - 1, parent, rank);
-            }
-        }
-    }
- 
-    
-    int freq[n],i;
-    for(i=0;i<n;i++)
-    {
-        freq[i] = 0;
-    }
-    int num = 0;
-    for(j = 0; j < a; j++)
-    {
-        for(k = 0; k < b; k++)
-        {
-            if(arr[j][k] == 1)
-            {
-                int x = find((j * b) + k, parent);
-
-                if(freq[x] == 0)
-                {
-                    num = num + 1;
-                    freq[x] = freq[x] + 1;
-                }
-                else
-                {
-                    freq[x] = freq[x] + 1;
-                }
-            }
-        }
-    }
-    return num;
-}
-
+  
 int main()
 {
-    int r,c;
-    int i,j,n,l;
-    int total;
-    printf("Enter the number of rows: ");
-    scanf("%d",&r);
-    printf("\nEnter the number of columns: ");
-    scanf("%d",&c);
-    n = r*c;
-    int parent[n];
-    int rank[n];
-    for(l = 0; l < n; l++)
-    {    
-        rank[l] = 0;
-    }
-    makeset(n,parent);
-    int arr[20][20]; 
-    printf("\nEnter the elements of adjacency matrix(0's and 1's):\n");
-    for(i=0;i<r;i++)
-    {
-        for(j=0;j<c;j++)
-        {
-            scanf("%d",&arr[i][j]);
-        }
-    }
-    total = count_of_Islands(arr,r,c,n,parent,rank);
-    printf("\nThe number of islands are: %d\n",total);
-    return 0;
-}   
+ 
+ node *head=NULL;
+ cout<<"Inserting from the end"<<endl;
+ insertend(&head,1);
+ insertend(&head,2);
+ insertend(&head,3);
+ 
+ print(head);
+ cout<<endl;
+ cout<<"Inserting from the Begining"<<endl;
+  insert(&head,4);
+ insert(&head,5);
+ insert(&head,6);
+ print(head);
+ 
+ cout<<endl;
+ cout<<"Deletion from the begining"<<endl;
+ head=deleteb(head);
+ print(head);
+ cout<<endl;
+ cout<<"Deletion in the end"<<endl;
+ head=deleteend(head);
+ print(head);
+ 
+ 
+ return 0;
+}
