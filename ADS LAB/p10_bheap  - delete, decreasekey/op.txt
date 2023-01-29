@@ -1,0 +1,29 @@
+1)Insert Element in the heap
+3)Decrease key of a node
+4)Delete a node
+5)Display Heap
+6)Exit
+Enter Your Choice: 1
+Enter the element to be inserted: 1
+
+Enter Your Choice: 1
+Enter the element to be inserted: 2
+
+Enter Your Choice: 1
+Enter the element to be inserted: 3
+
+Enter Your Choice: 1
+Enter the element to be inserted: 4
+
+Enter Your Choice: 1
+Enter the element to be inserted: 5
+
+Enter Your Choice: 5
+The Heap is: 
+The root nodes are: 
+5-->1
+Enter Your Choice: 4
+Enter the key to be deleted: 4
+Key reduced successfully
+Node Deleted Successfully
+Enter Your Choice: 

@@ -1,0 +1,8 @@
+Enter the  matrix size:
+5
+1 1 0 0 0
+0 1 0 0 1
+1 0 0 1 1
+0 0 0 0 0
+1 0 1 0 1
+The number of islands in binary matrix is : 5

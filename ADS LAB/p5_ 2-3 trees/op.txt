@@ -1,0 +1,37 @@
+2-3 Trees
+1.Insert
+2.Delete
+3.Display
+Enter your choice: 1
+Enter the no. of elements
+10
+Enter the keys
+25 35 40 47 75 10 56 20 50 30
+Enter your choice: 3
+Traversal of tree constructed is
+
+
+ 10
+ 20
+ 25 30
+ 35
+ 40
+ 47
+ 50 56 75
+
+Enter your choice: 2
+Enter the key to be deleted
+30
+Enter your choice: 3
+Traversal of tree constructed is
+
+
+ 10
+ 20
+ 25
+ 35
+ 40
+ 47
+ 50 56 75
+
+Enter your choice: 

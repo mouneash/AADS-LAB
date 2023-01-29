@@ -1,0 +1,17 @@
+Enter no of elements
+6
+Enter elements
+11
+2
+42
+7
+15
+10
+Inoder Traversal of Created Tree
+2  7  10  11  15  42  
+
+Level Order Traversal of Created Tree
+11-B 
+7-B 42-B 
+2-R 10-R 15-R 
+

@@ -1,0 +1,54 @@
+1.Insert Element
+2.Delete Element
+3.Search Element
+4.Display List 
+5.Exit 
+Enter your choice : 1
+Enter the element to be inserted: 1
+Successfully Inserted key 1
+1.Insert Element
+2.Delete Element
+3.Search Element
+4.Display List 
+5.Exit 
+Enter your choice : 1
+Enter the element to be inserted: 2
+Successfully Inserted key 2
+1.Insert Element
+2.Delete Element
+3.Search Element
+4.Display List 
+5.Exit 
+Enter your choice : 1
+Enter the element to be inserted: 3
+Successfully Inserted key 3
+1.Insert Element
+2.Delete Element
+3.Search Element
+4.Display List 
+5.Exit 
+Enter your choice : 3
+Enter the element to be searched: 1
+Found key: 1
+The List is: 
+*****Skip List*****
+Level 0: 1 2 3 
+Level 1: 1 
+Level 2: 1 
+1.Insert Element
+2.Delete Element
+3.Search Element
+4.Display List 
+5.Exit 
+Enter your choice : 4
+The List is: 
+*****Skip List*****
+Level 0: 1 2 3 
+Level 1: 1 
+Level 2: 1 
+1.Insert Element
+2.Delete Element
+3.Search Element
+4.Display List 
+5.Exit 
+Enter your choice : 

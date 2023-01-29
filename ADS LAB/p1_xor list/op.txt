@@ -1,0 +1,20 @@
+enter the number of elements to insert at begining 
+2
+enter element
+1
+enter element
+2
+enter the number of elements to insert at end 
+2
+enter element
+4
+enter element
+5
+The elements are 
+2 1 4 5 
+ enter the number of elements to delete at begining 
+1
+enter the number of elements to delete at end 
+1
+The elements are 
+1 4 

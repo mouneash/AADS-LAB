@@ -1,0 +1,20 @@
+Enter no of nodes in the tree
+6
+Enter the node
+10
+20
+25
+30
+40
+50
+
+----Tree----
+ 30
+ 20 40
+ 10 25 50
+Enter the element to be deleted
+40
+After deletion 
+ 30
+ 20 50
+ 10 25

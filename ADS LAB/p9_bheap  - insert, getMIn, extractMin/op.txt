@@ -1,0 +1,9 @@
+No of items
+5
+enter item
+50 10 30 40 20
+Heap elements after insertion:
+20 10 30 40 50 
+Minimum element of heap 10
+Heap after deletion of minimum element
+20 30 40 50 
